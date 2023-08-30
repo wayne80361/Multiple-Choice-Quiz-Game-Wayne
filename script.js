@@ -1,10 +1,11 @@
 // DEPENDCIES =========================================
-var question = document.getElementById("question-line");
-var answer = document.getElementsByClassName("option-button-container");
+var questionDisplayEl = document.getElementById("question-line");
+var choiceEl = document.getElementsByClassName("option-button-container");
 var checkcorrect = document.getElementsByClassName("checker");
 var timerEl = document.getElementById("Time-Left");
 var highscore = document.getElementById("view-highscore");
 var startButton = document.getElementById("start-btn");
+var option = document.getElementsByClassName("option");
 var startingQuestion = 0;
 var timeLeft = 60;
 
@@ -44,7 +45,6 @@ function startTimer() {
   var timerInterval = setInterval(function () {
     timeLeft--;
     updateTimer();
-
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
       quizIsOver();
@@ -58,11 +58,16 @@ function updateTimer() {
 }
 
 //-- one question will shown
-function showQuestion() {}
+function showQuestion() {
+  questionDisplayEl.textContent = questionSet[startingQuestion].question;
+  //-- with 4 choices
+  // choiceEl.innerHTML = "";---------------keep for insurance----------------------
+  for (var i = 0; i < 4; i++) {
+    option[i].textContent = questionSet[startingQuestion].choices[i];
+  }
+}
 
 // USER INTERACTIONS ==================================
-
-//-- with 4 choices
 
 //* if select the correct one,
 
