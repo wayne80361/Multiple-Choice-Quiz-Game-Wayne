@@ -67,14 +67,22 @@ function showQuestion() {
   }
 }
 
+//* if select the correct one,
+function checkAnswer() {
+  var correctWrong = document.getElementsByClassName("checker");
+  if (questionSet[startingQuestion].choice[i] == correctAnswer[i]) {
+    startingQuestion++;
+    // --- go to next question
+    return showQuestion();
+    //* if wrong,
+    // --- subtract time to time-left
+  } else timeLeft - 10;
+  // ---go to next question
+  return showQuestion();
+}
+
 // USER INTERACTIONS ==================================
 
-//* if select the correct one,
-
-// --- go to next question
-//* if wrong,
-// --- subtract time to time-left
-// ---go to next question
 function quizIsOver() {}
 //* game is over/finish
 //  -- when time is over
