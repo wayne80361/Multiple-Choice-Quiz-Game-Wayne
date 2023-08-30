@@ -1,18 +1,23 @@
+/* reset margin and padding and give visible boxes to elements and overall background to darker color*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: 1px dashed red;
+  background-color: rgb(209, 209, 209);
 }
 
-#view-high-score {
+/* set view-highscore to left of screen */
+#view-highscore {
   float: left;
 }
 
+/* set Time-Left to right of screen */
 #Time-Left {
   float: right;
 }
 
+/* container of the question to be place */
 .question-container {
   display: flex;
   justify-content: center;
@@ -21,10 +26,22 @@
   height: 100px;
 }
 
+/* question itself */
 #question-line {
   font-size: 30px;
 }
 
+/* container for choices and its buttons and set them at the middle of the container */
 .option-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 2px solid blue;
+}
+
+/* set the start button to middle */
+.start-btn-container {
+  display: flex;
+  justify-content: center;
+  border: 2px solid purple;
 }
