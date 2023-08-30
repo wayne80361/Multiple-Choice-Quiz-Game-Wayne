@@ -39,8 +39,9 @@
   border: 2px solid blue;
 }
 
-/* set the start button to middle */
-.start-btn-container {
+/* set the start button/checker to middle */
+.start-btn-container,
+.checker {
   display: flex;
   justify-content: center;
   border: 2px solid purple;
