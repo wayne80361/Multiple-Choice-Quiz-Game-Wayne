@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px dashed red;
+}
+
+#view-high-score {
+  float: left;
+}
+
+#Time-Left {
+  float: right;
+}
+
+.question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid lightgreen;
+  height: 100px;
+}
+
+#question-line {
+  font-size: 30px;
+}
+
+.option-button-container {
+  border: 2px solid blue;
+}
