@@ -62,17 +62,17 @@ function updateTimer() {
 
 //-- one question will shown
 function showQuestion() {
-  var Qnum = questionSet[startingQuestion];
-  questionDisplayEl.textContent = Qnum.question;
+  var questionNumber = questionSet[startingQuestion];
+  questionDisplayEl.textContent = questionNumber.question;
   //-- with 4 choices
   choiceEl.innerHTML = "";
 
-  Qnum.choices.forEach(function (choice) {
+  questionNumber.choices.forEach(function (choice) {
     var choiceButton = document.createElement("button");
     choiceButton.textContent = choice;
 
     choiceButton.addEventListener("click", function () {
-      checkAnswer(choice, Qnum.correctAnswer);
+      checkAnswer(choice, questionNumber.correctAnswer);
     });
     choiceEl.appendChild(choiceButton);
   });
@@ -120,23 +120,22 @@ function showQuestion() {
 // }
 
 //* if select the correct one,
-console.log(questionSet[0].choices);
-console.log(questionSet[0].correctAnswer);
-console.log(questionSet[1].choices[3]);
-console.log(questionSet[1].correctAnswer);
 
-function checkAnswer(i, questionNumcorrectAnswer) {
+function checkAnswer(selectAns, correctAnswer) {
   var correctWrong = document.getElementById("checker");
-  let questionNum = questionSet[startingQuestion];
+  // let questionNum = questionSet[startingQuestion];
 
-  if (questionNum.choices[i] === questionNum.correctAnswer) {
-    correctWrong.textContent = "true";
+  if (selectAns === correctAnswer) {
+    correctWrong.innerHTML =
+      '<strong style="font-family:verdana;">Correct!!!</strong>';
     startingQuestion++;
     // --- go to next question
     return showQuestion();
     //* if wrong,
     // --- subtract time to time-left
-  } else correctWrong.textContent = "false";
+  } else
+    correctWrong.innerHTML =
+      '<strong style="font-family:verdana;">WronG//</strong>';
   startingQuestion++;
   timeLeft -= 10;
   // ---go to next question
