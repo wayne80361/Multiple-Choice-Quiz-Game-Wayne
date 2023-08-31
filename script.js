@@ -8,7 +8,7 @@ var startButton = document.getElementById("start-btn");
 var optionButton = document.getElementsByClassName("option");
 var startingQuestion = 0;
 var timeLeft = 60;
-
+var timerInterval;
 // DATA ==============================================
 // question sets
 
@@ -64,7 +64,7 @@ function updateTimer() {
 function showQuestion() {
   var questionNumber = questionSet[startingQuestion];
   questionDisplayEl.textContent = questionNumber.question;
-  //-- with 4 choices
+  //-- with choices
   choiceEl.innerHTML = "";
 
   questionNumber.choices.forEach(function (choice) {
@@ -128,23 +128,37 @@ function checkAnswer(selectAns, correctAnswer) {
   if (selectAns === correctAnswer) {
     correctWrong.innerHTML =
       '<strong style="font-family:verdana;">Correct!!!</strong>';
-    startingQuestion++;
+    // startingQuestion++;
     // --- go to next question
-    return showQuestion();
+    NextQuestion();
+    // return showQuestion();++++++++++++
     //* if wrong,
     // --- subtract time to time-left
-  } else
+  } else {
     correctWrong.innerHTML =
       '<strong style="font-family:verdana;">WronG//</strong>';
+    // startingQuestion++;
+    timeLeft -= 10;
+    // ---go to next question
+    NextQuestion();
+    // return showQuestion();++++++++++++
+  }
+}
+function NextQuestion() {
   startingQuestion++;
-  timeLeft -= 10;
-  // ---go to next question
-  return showQuestion();
+  if (startingQuestion < questionSet.length) {
+    showQuestion();
+  } else {
+    quizIsOver();
+  }
 }
 
 // USER INTERACTIONS ==================================
 
-function quizIsOver() {}
+function quizIsOver() {
+  questionDisplayEl.textContent = "quiz is over";
+  clearInterval(timerInterval);
+}
 //* game is over/finish
 
 //  -- when time is over
