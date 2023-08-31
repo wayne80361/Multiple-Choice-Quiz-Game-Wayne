@@ -37,6 +37,7 @@ startButton.addEventListener("click", start);
 function start(event) {
   event.preventDefault();
   // showChoice();
+  showBtn();
   startTimer();
   showQuestion();
 }
@@ -113,13 +114,12 @@ console.log(questionSet[0].correctAnswer);
 console.log(questionSet[1].choices[3]);
 console.log(questionSet[1].correctAnswer);
 
-function checkAnswer(all1Choice, all2Choice, all3Choice, all4Choice) {
+function checkAnswer(event) {
   var correctWrong = document.getElementById("checker");
 
   if (
-    questionSet[startingQuestion].choices[
-      (all1Choice, all2Choice, all3Choice, all4Choice)
-    ] === questionSet[startingQuestion].correctAnswer
+    questionSet[startingQuestion].choices[event] ===
+    questionSet[startingQuestion].correctAnswer
   ) {
     correctWrong.textContent = "true";
     startingQuestion++;
@@ -148,19 +148,20 @@ function quizIsOver() {}
 // start quiz
 function hideButtonsOnLoad() {
   // hide choice buttons on page load
-  var query = document.querySelectorAll("div");
+  let query = document.querySelectorAll("div");
 
   for (var i = 0; i < 4; i++) {
-    query[i].setAttribute("style", "display:none");
+    // query[i].setAttribute("style", "display:none");
+    query[i].classList.add("hide");
   }
 }
 // show choice button after start is clicked
 
 function showBtn() {
-  var query = document.querySelectorAll("option-button-container");
+  let queryShow = document.querySelectorAll("div");
 
   for (var i = 0; i < 4; i++) {
-    query[i].setAttribute("style", "display: block");
+    queryShow[i].classList.add("show");
   }
 }
-// hideButtonsOnLoad();
+hideButtonsOnLoad();

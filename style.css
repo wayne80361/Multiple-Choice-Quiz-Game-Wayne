@@ -88,3 +88,11 @@
   display: flex;
   justify-content: center;
 }
+/* to hide objects */
+.hide {
+  display: none;
+}
+/* to show objects */
+.show {
+  display: flex;
+}
