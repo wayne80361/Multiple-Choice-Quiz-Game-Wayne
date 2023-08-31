@@ -1,6 +1,6 @@
 // DEPENDCIES =========================================
 var questionDisplayEl = document.getElementById("question-line");
-var choiceEl = document.getElementsByClassName("option-button-container");
+var choiceEl = document.getElementById("option-button-container");
 // var checkcorrect = document.getElementsByClassName("checker");
 var timerEl = document.getElementById("Time-Left");
 var highscore = document.getElementById("view-highscore");
@@ -36,8 +36,8 @@ startButton.addEventListener("click", start);
 
 function start(event) {
   event.preventDefault();
-  // showChoice();
-  showBtn();
+
+  // showBtn();
   startTimer();
   showQuestion();
 }
@@ -62,36 +62,47 @@ function updateTimer() {
 
 //-- one question will shown
 function showQuestion() {
-  questionDisplayEl.textContent = questionSet[startingQuestion].question;
+  var Qnum = questionSet[startingQuestion];
+  questionDisplayEl.textContent = Qnum.question;
   //-- with 4 choices
-  // choiceEl.innerHTML = "";---------------keep for insurance----------------------
+  choiceEl.innerHTML = "";
 
-  var newBtn = document.createElement("button");
-  var newQu = document.createTextNode("1st");
-  newBtn.appendChild(newQu);
+  Qnum.choices.forEach(function (choice) {
+    var choiceButton = document.createElement("button");
+    choiceButton.textContent = choice;
 
-  for (var i = 0; i < 4; i++) {
-    newBtn = optionButton[i].textContent =
-      questionSet[startingQuestion].choices[i];
-  }
+    choiceButton.addEventListener("click", function () {
+      checkAnswer(choice, Qnum.correctAnswer);
+    });
+    choiceEl.appendChild(choiceButton);
+  });
 
-  // optionButton;
+  // let query = document.querySelectorAll("button");
+  // console.log(query);
+  // query.classList.add("option");
 
-  // return clickChoice();
-
-  var all4Choice = document.getElementById("option-4-btn");
-  all4Choice.addEventListener("click", checkAnswer);
-  console.log(all4Choice);
-
-  var all3Choice = document.getElementById("option-3-btn");
-  all3Choice.addEventListener("click", checkAnswer);
-
-  var all2Choice = document.getElementById("option-2-btn");
-  all2Choice.addEventListener("click", checkAnswer);
-
-  var all1Choice = document.getElementById("option-1-btn");
-  all1Choice.addEventListener("click", checkAnswer);
+  // for (var i = 0; i < 4; i++) {
+  //   optionButton[i].textContent = questionSet[startingQuestion].choices[i];
+  //   optionButton[i].addEventListener("click", checkAnswer(i, question));
 }
+
+// optionButton;
+
+// return clickChoice();
+// -----------------------------------------------------------+++++++++++++++++++
+// var all4Choice = document.getElementById("option-4-btn");
+// all4Choice.addEventListener("click", checkAnswer);
+// console.log(all4Choice);
+
+// var all3Choice = document.getElementById("option-3-btn");
+// all3Choice.addEventListener("click", checkAnswer);
+
+// var all2Choice = document.getElementById("option-2-btn");
+// all2Choice.addEventListener("click", checkAnswer);
+
+// var all1Choice = document.getElementById("option-1-btn");
+// all1Choice.addEventListener("click", checkAnswer);
+// --------------------------------------------------------------++++++++++++++
 
 // function clickChoice(i) {
 //   document
@@ -114,13 +125,11 @@ console.log(questionSet[0].correctAnswer);
 console.log(questionSet[1].choices[3]);
 console.log(questionSet[1].correctAnswer);
 
-function checkAnswer(event) {
+function checkAnswer(i, questionNumcorrectAnswer) {
   var correctWrong = document.getElementById("checker");
+  let questionNum = questionSet[startingQuestion];
 
-  if (
-    questionSet[startingQuestion].choices[event] ===
-    questionSet[startingQuestion].correctAnswer
-  ) {
+  if (questionNum.choices[i] === questionNum.correctAnswer) {
     correctWrong.textContent = "true";
     startingQuestion++;
     // --- go to next question
@@ -146,22 +155,24 @@ function quizIsOver() {}
 
 // INITIALIZATION ======================================
 // start quiz
-function hideButtonsOnLoad() {
-  // hide choice buttons on page load
-  let query = document.querySelectorAll("div");
 
-  for (var i = 0; i < 4; i++) {
-    // query[i].setAttribute("style", "display:none");
-    query[i].classList.add("hide");
-  }
-}
+// function hideButtonsOnLoad() {
+//   // hide choice buttons on page load
+//   let query = document.querySelectorAll("div");
+//   console.log(query);
+//   for (var i = 0; i < 4; i++) {
+//     // query.setAttribute("style", "display:none");
+//     query[i].classList.add("hide");
+//   }
+// }
+
 // show choice button after start is clicked
 
-function showBtn() {
-  let queryShow = document.querySelectorAll("div");
+// function showBtn() {
+//   let query = document.querySelectorAll("div");
 
-  for (var i = 0; i < 4; i++) {
-    queryShow[i].classList.add("show");
-  }
-}
-hideButtonsOnLoad();
+//   for (var i = 0; i < 4; i++) {
+//     query[i].classList.add("show");
+//   }
+// }
+// hideButtonsOnLoad();
