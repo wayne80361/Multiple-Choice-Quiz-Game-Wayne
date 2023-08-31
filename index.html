@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header><h1>Welcome to the mini multiple-choice-quiz game</h1></header>
+    <header class="h1-container">
+      <h1>Welcome to the mini multiple-choice-quiz game</h1>
+    </header>
     <section>
       <nav>
         <ul>
@@ -20,23 +22,23 @@
       </header>
       <main>
         <section class="option-button-container">
-          <div id="option-1" class="option">
-            <button id="option-1-btn">button 1</button>option 1
+          <div id="option-1">
+            <button id="option-1-btn" class="option">button 1</button>
           </div>
-          <div id="option-2" class="option">
-            <button id="option-2-btn">button 2</button>option 2
+          <div id="option-2">
+            <button id="option-2-btn" class="option">button 2</button>
           </div>
-          <div id="option-3" class="option">
-            <button id="option-3-btn">button 3</button>option 3
+          <div id="option-3">
+            <button id="option-3-btn" class="option">button 3</button>
           </div>
-          <div id="option-4" class="option">
-            <button id="option-4-btn">button 4</button>option 4
+          <div id="option-4">
+            <button id="option-4-btn" class="option">button 4</button>
           </div>
         </section>
         <section class="start-btn-container">
           <button id="start-btn">start</button>
+          <p id="checker">correct/wrong</p>
         </section>
-        <section class="checker">correct/wrong</section>
       </main>
     </section>
     <script src="script.js"></script>

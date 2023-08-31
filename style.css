@@ -3,18 +3,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px dashed red;
+  /* border: 1px dashed red; */
   background-color: rgb(209, 209, 209);
 }
 
 /* set view-highscore to left of screen */
 #view-highscore {
   float: left;
+  margin-left: 10px;
 }
 
 /* set Time-Left to right of screen */
 #Time-Left {
   float: right;
+  margin-right: 10px;
 }
 
 /* container of the question to be place */
@@ -22,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid lightgreen;
+  /* border: 3px solid lightgreen; */
   height: 100px;
 }
 
@@ -33,16 +35,56 @@
 
 /* container for choices and its buttons and set them at the middle of the container */
 .option-button-container {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 }
-
+/* set option button style */
+.option {
+  width: 100px;
+  height: 35px;
+  margin: 3px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px purple;
+  background-color: rgba(199, 199, 199, 0.646);
+}
+/* add hover effect to option button */
+.option:hover {
+  border-color: cadetblue;
+  box-shadow: 0 0 10px pink;
+  transition: 0.15s;
+}
 /* set the start button/checker to middle */
 .start-btn-container,
 .checker {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid purple; */
+}
+/* set start button style */
+#start-btn {
+  width: 75px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px double rgb(236, 208, 208);
+  background-color: black;
+  color: lightgray;
+  font-size: 20px;
+  font-family: monospace;
+}
+
+/* set hover effect to start button */
+#start-btn:hover {
+  box-shadow: 0 0 15px rgb(145, 250, 243);
+  transition: 0.5s;
+}
+
+.h1-container {
   display: flex;
   justify-content: center;
-  border: 2px solid purple;
 }
