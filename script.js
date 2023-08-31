@@ -7,7 +7,7 @@ var highscore = document.getElementById("view-highscore");
 var startButton = document.getElementById("start-btn");
 var optionButton = document.getElementsByClassName("option");
 var startingQuestion = 0;
-var timeLeft = 60;
+var timeLeft = 5;
 var timerInterval;
 // DATA ==============================================
 // question sets
@@ -48,11 +48,14 @@ function startTimer() {
   var timerInterval = setInterval(function () {
     timeLeft--;
     updateTimer();
+    //  -- when time is over
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
+      // game is over
       quizIsOver();
     }
   }, 1000);
+  // hide start button when quiz starts
   startButton.style.display = "none";
 }
 
@@ -146,6 +149,7 @@ function checkAnswer(selectAns, correctAnswer) {
 }
 function NextQuestion() {
   startingQuestion++;
+  //  -- or answer all question
   if (startingQuestion < questionSet.length) {
     showQuestion();
   } else {
@@ -155,15 +159,13 @@ function NextQuestion() {
 
 // USER INTERACTIONS ==================================
 
+//* game is over/finish
 function quizIsOver() {
   questionDisplayEl.innerHTML =
     '<strong style="font-family:verdana;">Quiz is Over</strong>';
   clearInterval(timerInterval);
 }
-//* game is over/finish
 
-//  -- when time is over
-//  -- or answer all question
 //* shown score
 //  -- with a name input box
 
