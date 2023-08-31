@@ -10,13 +10,17 @@
 /* set view-highscore to left of screen */
 #view-highscore {
   float: left;
-  margin-left: 10px;
+  margin-left: 100px;
+  font-size: 120%;
+  font-weight: 700;
 }
 
 /* set Time-Left to right of screen */
 #Time-Left {
   float: right;
-  margin-right: 10px;
+  margin-right: 100px;
+  font-size: 120%;
+  font-weight: 900;
 }
 
 /* container of the question to be place */
@@ -51,7 +55,7 @@ main button {
   background-color: rgba(199, 199, 199, 0.646);
 }
 /* add hover effect to option button */
-.option:hover {
+main button:hover {
   border-color: cadetblue;
   box-shadow: 0 0 10px pink;
   transition: 0.15s;

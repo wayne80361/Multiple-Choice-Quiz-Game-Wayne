@@ -156,7 +156,8 @@ function NextQuestion() {
 // USER INTERACTIONS ==================================
 
 function quizIsOver() {
-  questionDisplayEl.textContent = "quiz is over";
+  questionDisplayEl.innerHTML =
+    '<strong style="font-family:verdana;">Quiz is Over</strong>';
   clearInterval(timerInterval);
 }
 //* game is over/finish
